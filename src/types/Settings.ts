@@ -63,4 +63,5 @@ export interface ContactSyncSettings {
 export enum NamingStrategy {
   Default = 'Default',
   VCF = 'VCF',
+  Array = 'Array',
 }

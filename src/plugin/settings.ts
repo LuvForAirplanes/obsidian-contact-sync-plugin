@@ -109,6 +109,7 @@ export class ContactSyncSettingTab extends PluginSettingTab {
         dropdown
           .addOption('Default', t('Default'))
           .addOption('VCF', t('VCF (vCard)'))
+          .addOption('Array', t('Array'))
           .setValue(this.plugin.settings.namingStrategy)
           .onChange(async (value) => {
             this.plugin.settings.namingStrategy = value as NamingStrategy;

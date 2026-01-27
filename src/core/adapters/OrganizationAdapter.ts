@@ -9,12 +9,31 @@ export class OrganizationAdapter implements FieldAdapter {
   ): ExtractionResult[] {
     const organizationAsLink = context?.organizationAsLink as boolean;
     const isVcfStrategy = context?.namingStrategy === NamingStrategy.VCF;
-    return (contact.organizations ?? [])
+
+    const organizations = (contact.organizations ?? [])
       .map((org) => org.name)
       .filter((name) => !!name)
-      .map((name) => ({
+      .map((name) => {
         // For VCF strategy, don't use wiki links even if organizationAsLink is true
-        value: organizationAsLink && !isVcfStrategy ? `[[${name}]]` : name,
-      }));
+        return organizationAsLink && !isVcfStrategy ? `[[${name}]]` : name;
+      });
+
+    if (organizations.length === 0) {
+      return [];
+    }
+
+    if (context?.namingStrategy === NamingStrategy.Array) {
+      const first = organizations[0];
+      return [
+        {
+          value:
+            organizations.length === 1 && first !== undefined
+              ? first
+              : organizations,
+        },
+      ];
+    }
+
+    return organizations.map((value) => ({ value }));
   }
 }
