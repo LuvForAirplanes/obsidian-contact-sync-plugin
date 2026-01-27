@@ -24,6 +24,7 @@ Each contact becomes a separate note with YAML frontmatter for metadata and free
 - 🧩 Multiple naming strategies for frontmatter keys:
     - **Default**: Customizable prefix (e.g., `s_name`, `s_email_2`).
     - **VCF (vCard)**: Fully compatible with the [VCF Contacts](https://github.com/broekema41/obsidian-vcf-contacts) plugin.
+    - **Array**: Stores multiple values (emails, phones, etc.) as a single array field in the frontmatter.
 
 - 📇 Supports multiple names, emails, phone numbers, birthdays, addresses, organizations, job titles, department, labels, relations
 

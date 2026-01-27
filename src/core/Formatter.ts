@@ -1,6 +1,7 @@
 import { GoogleContact } from 'src/types/Contact';
 import { FieldAdapter, KeyNamingStrategy } from './interfaces';
 import { DefaultNamingStrategy } from './strategies/DefaultNamingStrategy';
+import { ArrayNamingStrategy } from './strategies/ArrayNamingStrategy';
 import { NameAdapter } from './adapters/NameAdapter';
 import { FormattedNameAdapter } from './adapters/FormattedNameAdapter';
 import { EmailAdapter } from './adapters/EmailAdapter';
@@ -44,7 +45,9 @@ export class Formatter {
       ...context,
       namingStrategy: isVcfStrategy
         ? NamingStrategy.VCF
-        : NamingStrategy.Default,
+        : this.strategy instanceof ArrayNamingStrategy
+          ? NamingStrategy.Array
+          : NamingStrategy.Default,
     };
 
     for (const [fieldId, adapter] of Object.entries(this.adapters)) {
@@ -85,6 +88,8 @@ export function createDefaultFormatter(
 
   if (strategyType === NamingStrategy.VCF) {
     strategy = new VcfNamingStrategy();
+  } else if (strategyType === NamingStrategy.Array) {
+    strategy = new ArrayNamingStrategy();
   } else {
     strategy = new DefaultNamingStrategy();
   }

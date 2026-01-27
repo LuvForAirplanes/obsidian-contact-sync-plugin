@@ -42,6 +42,7 @@ export const ru = {
     'Стратегия генерации ключей frontmatter из данных контакта',
   Default: 'Стандартная',
   'VCF (vCard)': 'VCF (vCard)',
+  Array: 'Массив',
   'Organization as link': 'Организация как ссылка',
   'Organization name will be stored as a obsidian link [[...]] instead of plain text':
     'Название организации будет сохранено как ссылка Obsidian [[...]] вместо обычного текста (игнорируется в стратегии VCF)',
@@ -138,6 +139,7 @@ export const lv = {
     'Stratēģija frontmatter atslēgu ģenerēšanai no kontakta datiem',
   Default: 'Noklusējuma',
   'VCF (vCard)': 'VCF (vCard)',
+  Array: 'Masīvs',
   'Organization as link': 'Organizācija kā saite',
   'Organization name will be stored as a obsidian link [[...]] instead of plain text':
     'Organizācijas nosaukums tiks saglabāts kā Obsidian saite [[...]], nevis parasts teksts (tiek ignorēts VCF stratēģijā)',
@@ -233,6 +235,7 @@ export const en = {
     'Strategy to generate frontmatter keys from contact data',
   Default: 'Default',
   'VCF (vCard)': 'VCF (vCard)',
+  Array: 'Array',
   'Organization as link': 'Organization as link',
   'Organization name will be stored as a obsidian link [[...]] instead of plain text':
     'Organization name will be stored as a obsidian link [[...]] instead of plain text (ignored in VCF strategy)',
