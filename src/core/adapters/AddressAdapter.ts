@@ -61,6 +61,26 @@ export class AddressAdapter implements FieldAdapter {
       });
 
       return results;
+    } else if (context?.namingStrategy === NamingStrategy.Array) {
+      // For Array strategy, return array of formatted values
+      // If only one address, return as string
+      const addressValues = addresses
+        .map((item) => item.formattedValue)
+        .filter((val): val is string => !!val);
+
+      if (addressValues.length === 0) {
+        return [];
+      }
+
+      const first = addressValues[0];
+      return [
+        {
+          value:
+            addressValues.length === 1 && first !== undefined
+              ? first
+              : addressValues,
+        },
+      ];
     } else {
       // For Default strategy, return formattedValue as before
       return addresses

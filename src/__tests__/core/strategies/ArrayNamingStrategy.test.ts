@@ -109,4 +109,27 @@ describe('ArrayNamingStrategy Integration', () => {
     const result = formatter.generateFrontmatter(singleContact, 'contact_');
     expect(result.contact_relations).toEqual('SingleRel (partner)');
   });
+
+  it('should format addresses as an array', () => {
+    const contactWithAddresses = {
+      ...contact,
+      addresses: [
+        { formattedValue: '123 Main St' },
+        { formattedValue: '456 Second St' }
+      ]
+    } as GoogleContact;
+    const result = formatter.generateFrontmatter(contactWithAddresses, 'contact_');
+    expect(result.contact_address).toEqual(['123 Main St', '456 Second St']);
+  });
+
+  it('should format single address as string', () => {
+    const contactWithSingleAddress = {
+      ...contact,
+      addresses: [
+        { formattedValue: '123 Main St' }
+      ]
+    } as GoogleContact;
+    const result = formatter.generateFrontmatter(contactWithSingleAddress, 'contact_');
+    expect(result.contact_address).toEqual('123 Main St');
+  });
 });
